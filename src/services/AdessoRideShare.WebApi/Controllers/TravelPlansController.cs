@@ -23,7 +23,11 @@ namespace AdessoRideShare.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery]GetTravelPlanQuery query)
         {
-            return Ok(await _mediatr.Send(query));
+            var resp = await _mediatr.Send(query);
+            if (resp == null)
+                return NotFound();
+
+            return Ok(resp);
         }
     }
 }

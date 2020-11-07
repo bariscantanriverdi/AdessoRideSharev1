@@ -20,11 +20,19 @@ namespace AdessoRideShare.WebApi.Controllers
             _mediatr = mediatr;
         }
 
-
-        [HttpGet("{id}")]
+        /// <summary>
+        /// Get User By Id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpGet("{Id}")]
         public async Task<IActionResult> Get([FromRoute]GetUserByIdQuery request)
         {
-            return Ok(await _mediatr.Send(request));
+            var resp = await _mediatr.Send(request);
+            if (resp == null)
+                return NotFound();
+
+            return Ok(resp);
         }
 
 
@@ -38,7 +46,7 @@ namespace AdessoRideShare.WebApi.Controllers
         public async Task<IActionResult> Post([FromBody]AddUserCommand request)
         {
             var resp = await _mediatr.Send(request);
-            return Created(new Uri($"/users/{resp.Id}"), resp);
+            return StatusCode(201, resp);
         }
     }
 }

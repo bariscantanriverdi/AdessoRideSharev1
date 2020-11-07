@@ -20,6 +20,12 @@ namespace AdessoRideShare.WebApi.Controllers
             _mediatr = mediatr;
         }
 
+        /// <summary>
+        /// Get Users Travel Plans
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery]GetUserTravelPlanQuery query)
         {
@@ -30,7 +36,7 @@ namespace AdessoRideShare.WebApi.Controllers
             return Ok(resp);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         public async Task<IActionResult> Get([FromRoute]GetTravelPlanUserByIdQuery query)
         {
             var resp = await _mediatr.Send(query);
@@ -40,12 +46,24 @@ namespace AdessoRideShare.WebApi.Controllers
             return Ok(resp);
         }
 
+
+        /// <summary>
+        /// Add User Travel Plan
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]AddUserTravelPlanCommand request)
         {
             var resp = await _mediatr.Send(request);
-            return Created(new Uri($"/usertravelplans/{resp.Id}"),resp);
+            return StatusCode(201, resp);
         }
+
+        /// <summary>
+        /// Update User Travel Plan
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
 
         [HttpPut]
         public async Task<IActionResult> Put([FromBody]UpdateUserTravelPlanCommand request)
