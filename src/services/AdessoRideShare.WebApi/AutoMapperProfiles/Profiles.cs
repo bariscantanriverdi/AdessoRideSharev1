@@ -15,7 +15,7 @@ namespace AdessoRideShare.WebApi.AutoMapperProfiles
             CreateMap<AddUserTravelPlanCommand, TravelPlanUsers>().ReverseMap();
             CreateMap<TravelPlanUserModel, TravelPlanUsers>().ReverseMap();
             CreateMap<UpdateUserTravelPlanCommand, TravelPlanUsers>().ReverseMap();
-
+            CreateMap<User, AddUserCommand>().ReverseMap();
         }
     }
 }

@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace AdessoRideShare.WebApi.Application.Handler
 {
-    public class GetTralPlanUserByIdHandler : IRequestHandler<GetTravelPlanUserByIdQuery, TravelPlanUserModel>
+    public class GetTravelPlanUserByIdHandler : IRequestHandler<GetTravelPlanUserByIdQuery, TravelPlanUserModel>
     {
         private readonly ITravelPlanUserRepository _travelPlanUserRepository;
         private readonly IMapper _mapper;
-        public GetTralPlanUserByIdHandler(IMapper mapper, ITravelPlanUserRepository travelPlanUserRepository)
+        public GetTravelPlanUserByIdHandler(IMapper mapper, ITravelPlanUserRepository travelPlanUserRepository)
         {
             _travelPlanUserRepository = travelPlanUserRepository;
             _mapper = mapper;
