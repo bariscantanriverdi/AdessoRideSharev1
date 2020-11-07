@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdessoRideShare.Repository\AdessoRideShare.Repository.csproj" />
+    <ProjectReference Include="..\..\library\AdessoRideShare.Repository\AdessoRideShare.Repository.csproj" />
   </ItemGroup>
 
 
